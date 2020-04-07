@@ -5,7 +5,7 @@ class AddQuestion extends React.Component {
         return (
             <React.Fragment>
                 <div class="card minwidth-300 w-25 mt-3 mx-auto">
-                    <img src="..." class="card-img-top" alt="..." />
+                    <img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <div class="input-group mb-3 d-block">
