@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 class NotFound extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div class="card minwidth-300 w-25 mt-3 mx-auto">
+                <div>
                     <p>this is not found page</p>
                 </div>
 
