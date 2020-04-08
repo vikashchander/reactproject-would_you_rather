@@ -8,15 +8,15 @@ class Header extends Component {
 
         return (
             <React.Fragment>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-info">
 
-                    <NavLink class="navbar-brand" to='/'>Rather than You</NavLink>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    <NavLink className="navbar-brand" to='/'>Rather than You</NavLink>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
                         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="basicExampleNav">
-                        <ul class="navbar-nav mr-auto">
+                    <div className="collapse navbar-collapse" id="basicExampleNav">
+                        <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to='/'>Home</NavLink>
                             </li>
@@ -27,7 +27,7 @@ class Header extends Component {
                                 <NavLink className="nav-link" to='/leaderboard'>Leaderboard</NavLink>
                             </li>
                         </ul>
-                        <ul class="navbar-nav mr-3">
+                        <ul className="navbar-nav mr-3">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/login">Sign In</NavLink>
                             </li>

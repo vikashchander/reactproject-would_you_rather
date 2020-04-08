@@ -6,8 +6,8 @@ class Footer extends Component {
     render() {
         return (
             <React.Fragment>
-                <footer class="bg-info font-small fixed-bottom ">
-                    <div class="float-right mr-3 py-3">© {(new Date().getFullYear())} Copyright:
+                <footer className="bg-info font-small fixed-bottom ">
+                    <div className="float-right mr-3 py-3">© {(new Date().getFullYear())} Copyright:
                         <span> Vikash Chander</span>
                     </div>
                 </footer>

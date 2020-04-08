@@ -11,7 +11,7 @@ export function getInitialData() {
     );
 }
 
-export function saveQuestionVoted({ authedUser, qid, answer }) {
+export function saveQuestionVotes({ authedUser, qid, answer }) {
     return _saveQuestionAnswer({ authedUser, qid, answer });
 }
 
