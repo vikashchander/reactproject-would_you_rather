@@ -6,8 +6,8 @@ export default addQuestion({ question }){
     return {
         type: ADD_QUESTION,
         question
-    };
-}
+    }
+};
 
 export function handleAddQuestion({ optionOneText, optionTwoText, author }) {
     return saveQuestion({ optionOneText, optionTwoText, author }).then(

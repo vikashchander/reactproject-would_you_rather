@@ -1,18 +1,13 @@
-import { getInitialData } from '../utils/Api';
 
-const INITIAL_STATE = {
-    allUsers: {}
-}
-
-const allUserReducer = (state = INITIAL_STATE, action) => {
+const allUserReducer = (state = {}, action) => {
     switch (action.type) {
         case 'ALL_USERS':
             return {
                 ...state,
-                allUsers: { ...action.payload }
+                ...action.payload
             }
         default:
-            return state
+            return state;
     }
 }
 export default allUserReducer;

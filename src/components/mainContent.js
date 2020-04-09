@@ -10,18 +10,16 @@ import Home from './home';
 import NotFound from './NotFound';
 import Login from './login';
 import { allUsers } from '../actions/users';
-import { _getUsers } from '../utils/_Data';
-
+import { handleInitialData } from '../actions/data'
 
 
 class MainContent extends Component {
 
     componentDidMount() {
-        _getUsers().then(data => this.props.allUsers(data))
+        const { handleInitialData } = this.props;
+        handleInitialData();
     }
-
     render() {
-        //  this.props.allUsers(this.state.data);
         return (
             <Switch>
                 <Route exact path="/">
@@ -39,13 +37,10 @@ class MainContent extends Component {
                 <Route exact path="*">
                     <NotFound />
                 </Route>
-
             </Switch>
         )
     }
 }
-const mapStateToProps = ({ allUsers }) => {
-    return { allUsers };
-};
 
-export default connect(mapStateToProps, { allUsers })(MainContent);
+
+export default connect(null, { handleInitialData })(MainContent);
