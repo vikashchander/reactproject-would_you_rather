@@ -1,14 +1,9 @@
-const INITIAL_STATE = {
-    currentUser: null
-}
 
-const loginReducer = (state = INITIAL_STATE, action) => {
+
+const loginReducer = (state = null, action) => {
     switch (action.type) {
         case 'SET_STATE_USER':
-            return {
-                ...state,
-                currentUser: action.payload
-            }
+            return action.payload
         default:
             return state
     }

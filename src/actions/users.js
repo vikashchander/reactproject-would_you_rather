@@ -6,7 +6,7 @@ export const USER_QUESTIONS = 'USER_QUESTIONS';
 export function allUsers(users) {
     return {
         type: ALL_USERS,
-        payload: { ...users }
+        payload: users
     }
 }
 

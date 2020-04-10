@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setAuthedUser } from '../actions/login';
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleSelection = this.handleSelection.bind(this);
 
+    }
+    handleSelection(e) {
+        let value = e.target.value;
+        console.log(value);
+        this.props.setAuthedUser(value)
+        console.log(this.props.setAuthedUser(value));
+
+    }
     render() {
         const { sarahedo, tylermcginnis, johndoe } = this.props;
         const data1 = { ...sarahedo };
         const data2 = { ...tylermcginnis };
         const data3 = { ...johndoe };
-
-
-
         return (
             <React.Fragment>
                 <div class="card w-25 mx-auto my-2">
@@ -23,13 +30,12 @@ class Login extends React.Component {
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option value="data" disabled selected>Select Users</option>
+                            <select onChange={this.handleSelection} class="form-control" id="exampleFormControlSelect1">
+                                <option value="none" disabled selected>Select Users</option>
                                 <option value={data1.id}>{data1.name}</option>
                                 <option value={data2.id}>{data2.name}</option>
                                 <option value={data3.id}>{data3.name}</option>
                             </select>
-
                         </div>
                         <a href="#" class="btn btn-primary mx-auto">Login</a>
                     </div>
@@ -41,4 +47,10 @@ class Login extends React.Component {
 const mapStateToProps = state => {
     return { ...state.allUsers };
 };
-export default connect(mapStateToProps)(Login);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setAuthedUser: (data) => dispatch({ type: 'SET_STATE_USER', payload: data })
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

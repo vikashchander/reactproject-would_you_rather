@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Home from './home';
 import NotFound from './NotFound';
 import Login from './login';
-import { allUsers } from '../actions/users';
+
 import { handleInitialData } from '../actions/data'
 
 
