@@ -2,8 +2,25 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { NavLink, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import store from '../store/store';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        let value = null;
+        this.props.setAuthedUser(value);
+        console.log(this.props.setAuthedUser(value).payload);
+        const { history } = this.props;
+        (this.props.setAuthedUser(value).payload) ? history.push('/login') : history.push('/');
+
+    }
     render() {
 
         return (
@@ -28,8 +45,15 @@ class Header extends Component {
                             </li>
                         </ul>
                         <ul className="navbar-nav mr-3">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/login">Sign In</NavLink>
+                            <li className="nav-item text-uppercase">
+                                {(store.getState().setAuthedUser) &&
+                                    <div className="nav-link btn">Hi, {store.getState().setAuthedUser}</div>
+                                }
+                            </li>
+                            <li className="nav-item ">
+                                {(store.getState().setAuthedUser) &&
+                                    <div className="nav-link btn" onClick={this.handleClick} >Sign Out</div>
+                                }
                             </li>
                         </ul>
                     </div>
@@ -39,4 +63,14 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return { ...state };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setAuthedUser: (data) => dispatch({ type: 'SET_STATE_USER', payload: data })
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
