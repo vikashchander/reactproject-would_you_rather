@@ -10,7 +10,7 @@ export function allUsers(users) {
     }
 }
 
-export function userQuestions({ authedUser, qid }) {
+export function userAskedQuestions({ authedUser, qid }) {
     return {
         type: USER_QUESTIONS,
         payload: { authedUser, qid }

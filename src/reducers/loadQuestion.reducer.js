@@ -1,6 +1,6 @@
-const addQuestionReducer = (state = {}, action) => {
+const loadQuestionReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'ADD_QUESTION':
+        case 'LOAD_QUESTIONS':
             return {
                 ...state,
                 ...action.payload
@@ -9,4 +9,4 @@ const addQuestionReducer = (state = {}, action) => {
             return state
     }
 }
-export default addQuestionReducer;
+export default loadQuestionReducer;
