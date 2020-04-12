@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import setAuthedUser from './login.reducer';
 import allUsers from './users.reducer';
-import loadQuestionReducer from './loadQuestion.reducer';
-import addQuestionReducer from './addQuestion.reducer';
-import answerQuestionReducer from './answerQuestion.reducer';
+import loadQuestion from './loadQuestion.reducer';
+import addQuestion from './addQuestion.reducer';
+import answerQuestion from './answersQuestion.reducer';
 
 export default combineReducers({
     setAuthedUser,
     allUsers,
-    loadQuestionReducer,
-    addQuestionReducer,
-    answerQuestionReducer
+    loadQuestion,
+    addQuestion,
+    answerQuestion
 })

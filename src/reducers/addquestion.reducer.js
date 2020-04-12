@@ -1,4 +1,4 @@
-const addQuestionReducer = (state = {}, action) => {
+const addQuestion = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_QUESTION':
             return {
@@ -9,4 +9,4 @@ const addQuestionReducer = (state = {}, action) => {
             return state
     }
 }
-export default addQuestionReducer;
+export default addQuestion;
