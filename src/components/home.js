@@ -3,22 +3,18 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
-
     render() {
         const { question, users, setAuthedUser } = this.props;
-        const allUsers = Object.values(users);
-        console.log(allUsers);
         const allQuestionAnswer = Object.values(question);
-        console.log(allQuestionAnswer);
+        //console.log(allQuestionAnswer);
         const unAnsweredQuestions = allQuestionAnswer.filter(data => !data.optionOne.votes.includes(setAuthedUser) && !data.optionTwo.votes.includes(setAuthedUser));
-        console.log(unAnsweredQuestions);
+        //console.log(unAnsweredQuestions);
         const answeredQuestions = allQuestionAnswer.filter(data => data.optionOne.votes.includes(setAuthedUser) || data.optionTwo.votes.includes(setAuthedUser));
-        console.log(answeredQuestions);
+        //console.log(answeredQuestions);
         const unAnsweredTab = unAnsweredQuestions.map(data => users[data.author])
-        console.log(unAnsweredTab);
+        console.log('this page render with new anAnswedtab');
         const answeredTab = answeredQuestions.map(data => users[data.author])
-        console.log(answeredTab);
-
+        //console.log(answeredTab);
         return (
             <React.Fragment>
                 <div className='container w-50 my-3'>
@@ -47,7 +43,6 @@ class Home extends React.Component {
                                         <li className="mt-0 card-text">{data.optionTwo.text}</li>
                                         <Link to={`/questions/${data.id}`} className="btn btn-primary">Choose Your Poll</Link>
                                     </div>
-                                    {console.log(data)}
                                 </div >
                             )}
                         </div>
@@ -65,7 +60,6 @@ class Home extends React.Component {
                                         <li className="mt-0 card-text">{data.optionTwo.text}</li>
                                         <Link to={`/questions/${data.id}`} className="btn btn-primary">View Poll</Link>
                                     </div>
-                                    {console.log(data)}
                                 </div >
                             )}
                         </div>

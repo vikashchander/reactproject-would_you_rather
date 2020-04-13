@@ -1,8 +1,8 @@
-
+import { SET_AUTHED_USER } from "../actions/login";
 
 const loginReducer = (state = null, action) => {
     switch (action.type) {
-        case 'SET_STATE_USER':
+        case SET_AUTHED_USER:
             return action.payload
         default:
             return state

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +22,7 @@ class Login extends React.Component {
 
     }
 
-    handleSubmit(e) {
+    handleSubmit() {
         const { history } = this.props;
         console.log(this.state.value)
         this.props.setAuthedUser(this.state.value);
@@ -33,6 +32,7 @@ class Login extends React.Component {
 
     render() {
         const { sarahedo, tylermcginnis, johndoe } = this.props.allUsers;
+        console.log(this.props);
         const data1 = { ...sarahedo };
         const data2 = { ...tylermcginnis };
         const data3 = { ...johndoe };
