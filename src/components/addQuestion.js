@@ -25,12 +25,13 @@ class AddQuestion extends React.Component {
     handleClick = async () => {
         const { optionOne, optionTwo } = this.state;
         const { authedUser, history } = this.props;
+        let optionOneText = optionOne;
+        let optionTwoText = optionTwo;
+        let author = authedUser;
         (!optionOne || !optionTwo) ? history.push("/newquestion") : history.push("/")
         //console.log({ optionOne, optionTwo, authedUser })
         this.props.handleAddQuestion({
-            optionOne,
-            optionTwo,
-            authedUser
+            optionOneText, optionTwoText, author
         })
         // console.log({ optionOneText, optionTwoText, author })
     }

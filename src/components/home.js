@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
     render() {
         const { question, users, setAuthedUser } = this.props;
+        console.log(this.props);
         const allQuestionAnswer = Object.values(question);
         //console.log(allQuestionAnswer);
         const unAnsweredQuestions = allQuestionAnswer.filter(data => !data.optionOne.votes.includes(setAuthedUser) && !data.optionTwo.votes.includes(setAuthedUser));

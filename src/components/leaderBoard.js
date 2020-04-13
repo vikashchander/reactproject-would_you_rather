@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 class LeaderBoard extends React.Component {
     render() {
+        const { user } = this.props;
+        console.log(user)
         return (
             <React.Fragment>
                 <div class="card w-25 mx-auto my-2">
@@ -24,4 +27,8 @@ class LeaderBoard extends React.Component {
     }
 }
 
-export default LeaderBoard;
+const mapStateToProps = (state) => {
+    return { user: state.allUsers }
+}
+
+export default connect(mapStateToProps)(LeaderBoard);
