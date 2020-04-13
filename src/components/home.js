@@ -6,11 +6,18 @@ class Home extends React.Component {
 
     render() {
         const { question, users, setAuthedUser } = this.props;
-        console.log({ ...question });
         const allUsers = Object.values(users);
+        console.log(allUsers);
         const allQuestionAnswer = Object.values(question);
         console.log(allQuestionAnswer);
-        console.log(allUsers);
+        const unAnsweredQuestions = allQuestionAnswer.filter(data => !data.optionOne.votes.includes(setAuthedUser) && !data.optionTwo.votes.includes(setAuthedUser));
+        console.log(unAnsweredQuestions);
+        const answeredQuestions = allQuestionAnswer.filter(data => data.optionOne.votes.includes(setAuthedUser) || data.optionTwo.votes.includes(setAuthedUser));
+        console.log(answeredQuestions);
+        const unAnsweredTab = unAnsweredQuestions.map(data => users[data.author])
+        console.log(unAnsweredTab);
+        const answeredTab = answeredQuestions.map(data => users[data.author])
+        console.log(answeredTab);
 
         return (
             <React.Fragment>
@@ -26,39 +33,45 @@ class Home extends React.Component {
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            {/* {mainData.map(data =>
-                                <div class="card w-50 my-2">
-                                    <div class="view overlay">
-                                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+                        <div class="tab-pane fade show active mw-100" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            {unAnsweredQuestions.map((data, index) =>
+                                < div className="card w-50 my-2" key={data.id} >
+                                    <div className="view overlay mr-0">
+                                        <img className="" width="200" height="100" src={unAnsweredTab[index].avatarURL}
                                             alt="Card image cap" />
                                     </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">{data.users}</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                                   content.</p>
-                                        <a href="#" class="btn btn-primary">View Poll</a>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{unAnsweredTab[index].name}</h5>
+                                        <li className="card-text">{data.optionOne.text}</li>
+                                        <p className="text-center mb-0 pb-0">OR</p>
+                                        <li className="mt-0 card-text">{data.optionTwo.text}</li>
+                                        <Link to={`/questions/${data.id}`} className="btn btn-primary">Choose Your Poll</Link>
                                     </div>
-                                </div>
-                            )} */}
+                                    {console.log(data)}
+                                </div >
+                            )}
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="card w-50 my-2">
-                                <div class="view overlay">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-                                        alt="Card image cap" />
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                        content.</p>
-                                    <a href="#" class="btn btn-primary">View Poll</a>
-                                </div>
-                            </div>
+                            {answeredQuestions.map((data, index) =>
+                                < div className="card w-50 my-2" key={data.id} >
+                                    <div className="view overlay mr-0 ">
+                                        <img className="card-img-top" width="200" height="100" src={answeredTab[index].avatarURL}
+                                            alt="Card image cap" />
+                                    </div>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{answeredTab[index].name}</h5>
+                                        <li className="card-text">{data.optionOne.text}</li>
+                                        <p className="text-center mb-0 pb-0">OR</p>
+                                        <li className="mt-0 card-text">{data.optionTwo.text}</li>
+                                        <Link to={`/questions/${data.id}`} className="btn btn-primary">View Poll</Link>
+                                    </div>
+                                    {console.log(data)}
+                                </div >
+                            )}
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }
