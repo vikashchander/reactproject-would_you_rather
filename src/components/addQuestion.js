@@ -30,7 +30,7 @@ class AddQuestion extends React.Component {
         let author = authedUser;
         (!optionOne || !optionTwo) ? history.push("/newquestion") : history.push("/")
         //console.log({ optionOne, optionTwo, authedUser })
-        this.props.handleAddQuestion({
+        await this.props.handleAddQuestion({
             optionOneText, optionTwoText, author
         })
         // console.log({ optionOneText, optionTwoText, author })
@@ -48,10 +48,10 @@ class AddQuestion extends React.Component {
                         <h5 class="card-title">{user.name}</h5>
                         <form class="needs-validation" noValidate>
                             <div class="form-row">
-                                <h6>Ask Other Opinion</h6>
+                                <h6>{user.name}'s Ask</h6>
                                 <div class="col-md-12 mb-3">
                                     <input type="text" class="form-control" id="validationCustom01"
-                                        name="optionOne" placeholder="Enter Opinion One Text" value={optionOne}
+                                        name="optionOne" required placeholder="Enter Opinion One Text" value={optionOne}
                                         onChange={this.handleOnChange}
                                         required />
                                     <div class="valid-feedback">
@@ -61,9 +61,9 @@ class AddQuestion extends React.Component {
                                 <div class="col-md-12 mb-3">
                                     <input type="text" class="form-control"
                                         name="optionTwo"
-                                        id="validationCustom02" placeholder="Enter Opinion Two Text"
+                                        id="validationCustom02" required placeholder="Enter Opinion Two Text"
                                         value={optionTwo}
-                                        onChange={this.handleOnChange} required />
+                                        onChange={this.handleOnChange} />
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
