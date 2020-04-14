@@ -15,7 +15,7 @@ class Home extends React.Component {
         const unAnsweredTab = unAnsweredQuestions.map(data => users[data.author])
         console.log('this page render with new anAnswedtab');
         const answeredTab = answeredQuestions.map(data => users[data.author])
-        //console.log(answeredTab);
+
         return (
             <React.Fragment>
                 <div className='container w-50 my-3'>
@@ -75,7 +75,7 @@ const mapStateToProps = (state) => {
     return {
         question: state.loadQuestion,
         users: state.allUsers,
-        setAuthedUser: state.setAuthedUser,
+        setAuthedUser: state.setAuthedUser
     }
 }
 

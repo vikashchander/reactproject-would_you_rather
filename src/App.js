@@ -4,11 +4,6 @@ import MainContent from './components/mainContent';
 import Footer from './components/footer';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 
 

@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 import Home from './home';
 import NotFound from './NotFound';
 import Login from './login';
-import { handleInitialData } from '../actions/data'
+import { handleInitialData } from '../actions/data';
+import QuestionView from './questionView';
 
 
 class MainContent extends Component {
@@ -30,6 +31,9 @@ class MainContent extends Component {
                 </PrivateRoute>
                 <PrivateRoute exact path="/newquestion">
                     <AddQuestion />
+                </PrivateRoute>
+                <PrivateRoute exact path="/questions/:id">
+                    <QuestionView />
                 </PrivateRoute>
                 <PrivateRoute exact path="/leaderboard">
                     <LeaderBoard />
