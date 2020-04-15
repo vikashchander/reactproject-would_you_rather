@@ -38,14 +38,14 @@ class Login extends React.Component {
         const data3 = { ...johndoe };
         return (
             <React.Fragment>
-                <div class="card w-25 mx-auto my-2">
-                    <div class="view overlay">
-                        <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+                <div className="card w-25 mx-auto my-2">
+                    <div className="view overlay">
+                        <img className="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
                             alt="Card image cap" />
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <select value={this.state.value} onChange={this.handleSelection} class="form-control" id="exampleFormControlSelect1">
+                    <div className="card-body">
+                        <div className="form-group">
+                            <select value={this.state.value} onChange={this.handleSelection} className="form-control" id="exampleFormControlSelect1">
                                 <option disabled selected>Select Users</option>
                                 <option value={data1.id}>{data1.name}</option>
                                 <option value={data2.id}>{data2.name}</option>
@@ -53,7 +53,7 @@ class Login extends React.Component {
                                 {console.log(this.props)}
                             </select>
                         </div>
-                        <Link onClick={this.handleSubmit} class="btn btn-primary mx-auto">Login</Link>
+                        <Link onClick={this.handleSubmit} className="btn btn-info btn-md btn-block">Login</Link>
                     </div>
                 </div>
             </React.Fragment >

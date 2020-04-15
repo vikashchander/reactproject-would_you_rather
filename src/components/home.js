@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './home.css';
 
 class Home extends React.Component {
     render() {
@@ -18,51 +19,54 @@ class Home extends React.Component {
 
         return (
             <React.Fragment>
-                <div className='container w-50 my-3'>
+                <div className='container w-75 my-3'>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                                aria-selected="true">Unanswered Questions</a>
+                            <a class="nav-link active text-capitalize" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                                aria-selected="true">Unanswered Questions <span class="badge badge-info">{unAnsweredQuestions.length}</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                                aria-selected="false">Answered Questions</a>
+                            <a class="nav-link text-capitalize" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                                aria-selected="false">Answered Questions <span class="badge badge-info">{answeredQuestions.length}</span></a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active mw-100" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div className='container mx-auto row mb-5'>
                             {unAnsweredQuestions.map((data, index) =>
-                                < div className="card w-50 my-2" key={data.id} >
-                                    <div className="view overlay mr-0">
-                                        <img className="" width="200" height="100" src={unAnsweredTab[index].avatarURL}
+                              <div className="card data m-2 col-md-6" key={data.id} >
+                                  <div className='mx-auto'>
+                                  <img className="w-50 rounded-circle ml-5 my-3" src={unAnsweredTab[index].avatarURL} alt="Card image cap" />
+                                     </div>       
+                                    <div className="card-body my-2">
+                                        <h5 className="card-title text-capitalize">{unAnsweredTab[index].name}'s ask</h5>
+                                        <li className="card-text text-capitalize">{data.optionOne.text}</li>
+                                        <p className="card-text text-center mb-0 pb-0 text-capitalize">or</p>
+                                        <li className="mt-0 card-text text-capitalize">{data.optionTwo.text}</li>
+                                    </div>
+                                    <Link to={`/questions/${data.id}`} className="mb-4 btn btn-info">Choose Your Poll</Link>
+                                    </div>
+                            )}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div className='container mx-auto row mb-5'>
+                            {answeredQuestions.map((data, index) =>
+                                < div className="card data m-2 col-md-6" key={data.id} >
+                                    <div className="mx-auto">
+                                        <img className="w-50 rounded-circle ml-5 my-3" src={answeredTab[index].avatarURL}
                                             alt="Card image cap" />
                                     </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{unAnsweredTab[index].name}</h5>
-                                        <li className="card-text">{data.optionOne.text}</li>
-                                        <p className="text-center mb-0 pb-0">OR</p>
-                                        <li className="mt-0 card-text">{data.optionTwo.text}</li>
-                                        <Link to={`/questions/${data.id}`} className="btn btn-primary">Choose Your Poll</Link>
+                                    <div className="card-body my-2">
+                                        <h5 className="card-title">{answeredTab[index].name}</h5>
+                                        <li className="card-text text-capitalize">{data.optionOne.text}</li>
+                                        <p className="text-center mb-0 pb-0 text-capitalize">or</p>
+                                        <li className="mt-0 card-text text-capitalize">{data.optionTwo.text}</li>
                                     </div>
+                                    <Link to={`/questions/${data.id}`} className="mb-4 btn btn-info btn-block">View Poll</Link>
                                 </div >
                             )}
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            {answeredQuestions.map((data, index) =>
-                                < div className="card w-50 my-2" key={data.id} >
-                                    <div className="view overlay mr-0 ">
-                                        <img className="card-img-top" width="200" height="100" src={answeredTab[index].avatarURL}
-                                            alt="Card image cap" />
-                                    </div>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{answeredTab[index].name}</h5>
-                                        <li className="card-text">{data.optionOne.text}</li>
-                                        <p className="text-center mb-0 pb-0">OR</p>
-                                        <li className="mt-0 card-text">{data.optionTwo.text}</li>
-                                        <Link to={`/questions/${data.id}`} className="btn btn-primary">View Poll</Link>
-                                    </div>
-                                </div >
-                            )}
                         </div>
                     </div>
                 </div>

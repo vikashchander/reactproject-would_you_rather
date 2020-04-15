@@ -30,23 +30,22 @@ class LeaderBoard extends React.Component {
 
         return (
             <React.Fragment>
+                <div className='container mx-auto row mb-5'>
                 {allLeaderCards.map(data => (
-                    <div class="card w-25 mx-auto my-2" key={data.id}>
-                        <div class="view overlay">
-                            <img class="card-img-top" src={data.avatarURL}
+                    <div className="card data m-3 col-md-6" key={data.id}>
+                        <div className="mx-auto">
+                            <img className="w-50 rounded-circle ml-5 my-3" src={data.avatarURL}
                                 alt="Card image cap" />
-
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">{data.name}</h4>
-                            <p class="card-text">answers: {data.userAnswers}</p>
-                            <p class="card-text">questions: {data.questions.length}</p>
-                            <p class="card-text">score: {data.score}</p>
+                        <div className="card-body my-2">
+                            <h4 className="card-title">{data.name}</h4>
+                            <h6 className='text-info'>Answers: {data.userAnswers}</h6>
+                            <h6 className='text-primary' >Questions: {data.questions.length}</h6>
+                            <h6 className='text-success'>Score: {data.score}</h6>
                         </div>
                     </div>
-                ))
-
-                }
+                ))}
+                </div>
             </React.Fragment >
         )
     }
