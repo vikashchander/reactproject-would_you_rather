@@ -43,7 +43,7 @@ class AddQuestion extends React.Component {
         return (
             <React.Fragment>
                 <div className="card w-25 my-4 h-50 mx-auto">
-                    <img src={user.avatarURL} className="h-50 rounded-circle w-50 mx-auto" alt="..." />
+                    <img src={user.avatarURL} className="h-50 rounded-circle mx-auto" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{user.name}</h5>
                         <form className="needs-validation" noValidate>

@@ -53,44 +53,44 @@ function QuestionView(props) {
         <React.Fragment>
             {answeredData.length === 1 ?
                 (
-                    <div classNameName="card w-25 my-3 mx-auto" key={userData.id}>
-                        <div classNameName="view overlay w-50 mx-auto" >
-                            <img classNameName="my-2 rounded-circle w-75 z-depth-2" src={userData.avatarURL}
+                    <div className="card w-25 my-3 mx-auto" key={userData.id}>
+                        <div className="view overlay w-50 mx-auto" >
+                            <img className="my-2 rounded-circle w-75 z-depth-2" src={userData.avatarURL}
                                 alt="userImage" />
                         </div>
-                        <div classNameName="card-body">
-                            <h4 classNameName="card-title">{userData.name}'s Opinion</h4>
-                            <div classNameName='mb-2'>
+                        <div className="card-body">
+                            <h4 className="card-title">{userData.name}'s Opinion</h4>
+                            <div className='mb-2'>
                                 <p>{answeredView.optionOne.text}</p>
-                            <div classNameName="progress">
-                            <div classNameName="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionOne} out of {totalVotes} votes</div>
+                            <div className="progress">
+                            <div className="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionOne} out of {totalVotes} votes</div>
                                    </div>
-                                   <p classNameName='my-2'>{answeredView.optionTwo.text}</p>
-                                   <div classNameName="progress">
-                          <div classNameName="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionTwo} out of {totalVotes} votes</div>
+                                   <p className='my-2'>{answeredView.optionTwo.text}</p>
+                                   <div className="progress">
+                          <div className="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionTwo} out of {totalVotes} votes</div>
                             </div>
                             </div>
                         </div>
                     </div>
                 )
-                : (<div classNameName="card data m-2 mx-auto">
-                    <div classNameName="mx-auto">
-                        <img classNameName="w-50 rounded-circle ml-5 my-3" src={userData.avatarURL}
+                : (<div className="card data m-2 mx-auto">
+                    <div className="mx-auto">
+                        <img className="w-50 rounded-circle ml-5 my-3" src={userData.avatarURL}
                             alt="userImage" />
                     </div>
-                    <div classNameName="card-body my-2">
+                    <div className="card-body my-2">
                         <h4 className="card-title">{userData.name}'s Ask </h4>
                         <div className='mb-2'>
                             <div className="card-text custom-control custom-radio">
-                                <input type="radio" className="custom-control-input" checked={votedForOption === "optionOne"} name='optionOne' value="optionOne" id="defaultGroupExample1" onChange={handleChange} />
+                                <input type="radio" class="custom-control-input" checked={votedForOption === "optionOne"} name='optionOne' value="optionOne" id="defaultGroupExample1" onChange={handleChange} />
                                 <label className="custom-control-label text-primary text-capitalize" htmlFor="defaultGroupExample1">{unAnsweredView.optionOne.text}</label>
                             </div>
                             <div className="card-text custom-control custom-radio">
-                                <input type="radio" className="custom-control-input" checked={votedForOption === "optionTwo"}  name='optionTwo' value="optionTwo" id="defaultGroupExample2" onChange={handleChange} />
+                                <input type="radio" class="custom-control-input" checked={votedForOption === "optionTwo"}  name='optionTwo' value="optionTwo" id="defaultGroupExample2" onChange={handleChange} />
                                 <label className="custom-control-label text-success text-capitalize" htmlFor="defaultGroupExample2">{unAnsweredView.optionTwo.text}</label>
                             </div>
                         </div>
-                        <div onClick={handleClick}  classNameName="btn btn-info">Submit Your Opinion</div>
+                        <div onClick={handleClick}  className="btn btn-info">Submit Your Opinion</div>
                     </div>
                 </div>)}
         </React.Fragment>
@@ -109,20 +109,20 @@ export default withRouter(connect(mapStateToProps,{ handleAnswerQuestion})(Quest
 
 
 
-{/* <div classNameName='container mx-auto row mb-5'>
+{/* <div className='container mx-auto row mb-5'>
 {answeredQuestions.map((data, index) =>
-    < div classNameName="card data m-2 col-md-6" key={data.id} >
-        <div classNameName="mx-auto">
-            <img classNameName="w-50 rounded-circle ml-5 my-3" src={answeredTab[index].avatarURL}
+    < div className="card data m-2 col-md-6" key={data.id} >
+        <div className="mx-auto">
+            <img className="w-50 rounded-circle ml-5 my-3" src={answeredTab[index].avatarURL}
                 alt="Card image cap" />
         </div>
-        <div classNameName="card-body my-2">
-            <h5 classNameName="card-title">{answeredTab[index].name}</h5>
-            <li classNameName="card-text">{data.optionOne.text}</li>
-            <h6 classNameName="text-center mb-0 pb-0">OR</h6>
-            <li classNameName="mt-0 card-text">{data.optionTwo.text}</li>
+        <div className="card-body my-2">
+            <h5 className="card-title">{answeredTab[index].name}</h5>
+            <li className="card-text">{data.optionOne.text}</li>
+            <h6 className="text-center mb-0 pb-0">OR</h6>
+            <li className="mt-0 card-text">{data.optionTwo.text}</li>
         </div>
-        <Link to={`/questions/${data.id}`} classNameName="mb-4 btn btn-info btn-block">View Poll</Link>
+        <Link to={`/questions/${data.id}`} className="mb-4 btn btn-info btn-block">View Poll</Link>
     </div >
 )}
 </div> */}
