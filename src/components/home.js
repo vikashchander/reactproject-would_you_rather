@@ -71,9 +71,20 @@ class Home extends React.Component {
     }
 }
 
+const sortQuestionsByTimeStamp = questions => {
+    const questionsSorted = {};
+    Object.keys(questions)
+      .map(key => questions[key])
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .forEach(question => {
+        questionsSorted[question.id] = question;
+      });
+    return questionsSorted;
+  };
+
 const mapStateToProps = (state) => {
     return {
-        question: state.loadQuestion,
+        question:sortQuestionsByTimeStamp(state.loadQuestion),
         users: state.allUsers,
         setAuthedUser: state.setAuthedUser
     }
