@@ -11,7 +11,6 @@ class Footer extends Component {
                         <span> Vikash Chander</span>
                     </div>
                 </footer>
-
             </React.Fragment>
         )
     }

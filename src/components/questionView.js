@@ -65,16 +65,17 @@ function QuestionView(props) {
                         </div>
                         <div className="card-body">
                             <h4 className="card-title">{userData.name}'s Opinion</h4>
+                            <h6 className="text-capitalize">would you rather</h6>
                             <div className='mb-2'>
                              <div className='d-inline-block'>
                              <p className='text-capitalize'>{answeredView.optionOne.text}</p>
-                             {votedForOptionOne && <span className="badge badge-info mr-2">Is Your Choice</span>}
+                             {votedForOptionOne && <span className="badge badge-info mr-2"> Your Choice</span>}
                              </div>
                             <div className="progress">
                             <div className={`progress-bar bg-info w-${processBarOne}`} role="progressbar"   aria-valuemax="100">{voteCountOptionOne} out of {totalVotes} votes</div>
                             </div>
                             
-                                   <p className='my-2 mr-3 text-capitalize'>{answeredView.optionTwo.text}{votedForOptionTwo && <span className="badge badge-info mr-2">Is Your Choice</span>}</p>
+                                   <p className='my-2 mr-3 text-capitalize'>{answeredView.optionTwo.text}{votedForOptionTwo && <span className="badge badge-info mr-2"> Your Choice</span>}</p>
                                    <div className="progress">
                           <div className={`progress-bar bg-info w-${processBarTwo}`} role="progressbar"  aria-valuemax="100">{voteCountOptionTwo} out of {totalVotes} votes</div>
                             </div>
@@ -89,6 +90,7 @@ function QuestionView(props) {
                     </div>
                     <div className="card-body my-2">
                         <h4 className="card-title">{userData.name}'s Ask </h4>
+                         <h6 className="text-capitalize">would you rather</h6>
                         <div className='mb-2'>
                             <div className="card-text custom-control custom-radio">
                                 <input type="radio" className="custom-control-input" checked={votedForOption === "optionOne"} name='optionOne' value="optionOne" id="defaultGroupExample1" onChange={handleChange} />

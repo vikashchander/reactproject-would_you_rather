@@ -18,7 +18,6 @@ export function handleAnswerQuestion({ authedUser, qid, answer }) {
         return saveQuestionVotes({ authedUser, qid, answer }).then(() => {
             dispatch(answerQuestion({ authedUser, qid, answer }));
             dispatch(userAnweredQuestions({ authedUser, qid, answer }));
-            console.log({ authedUser, qid, answer });
         });
     };
 }

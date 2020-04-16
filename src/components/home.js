@@ -40,6 +40,7 @@ class Home extends React.Component {
                                      </div>       
                                     <div className="card-body my-2">
                                         <h5 className="card-title text-capitalize">{unAnsweredTab[index].name}'s ask</h5>
+                                         <h6 className="text-capitalize">would you rather</h6>
                                         <li className="card-text text-capitalize">{data.optionOne.text}</li>
                                         <p className="card-text text-center mb-0 pb-0 text-capitalize">or</p>
                                         <li className="mt-0 card-text text-capitalize">{data.optionTwo.text}</li>
@@ -59,6 +60,7 @@ class Home extends React.Component {
                                     </div>
                                     <div className="card-body my-2">
                                         <h5 className="card-title">{answeredTab[index].name}</h5>
+                                         <h6 className="text-capitalize">would you rather</h6>
                                         <li className="card-text text-capitalize">{data.optionOne.text}</li>
                                         <p className="text-center mb-0 pb-0 text-capitalize">or</p>
                                         <li className="mt-0 card-text text-capitalize">{data.optionTwo.text}</li>

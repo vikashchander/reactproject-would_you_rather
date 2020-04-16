@@ -16,8 +16,6 @@ export function handleAddQuestion({ optionOneText, optionTwoText, author }) {
             question => {
                 dispatch(userAskedQuestions({ authedUser: author, qid: question.id }));
                 dispatch(addQuestion({ question }));
-                console.log({ question });
-
             });
     }
 };
