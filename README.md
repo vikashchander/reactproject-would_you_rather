@@ -4,7 +4,7 @@
 
 ## How to Load the App
 
-You can checkout this app at :[Would You Rather]()
+You can checkout this app at :[Would You Rather](https://secret-taiga-56450.herokuapp.com/login)
 
 
 ## Project Purpose:
