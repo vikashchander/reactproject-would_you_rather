@@ -1,6 +1,6 @@
 import { ALL_USERS, USER_ANSWERS, USER_QUESTIONS } from '../actions/users';
 
-const allUserReducer = (state = {}, action) => {
+const allUser = (state = {}, action) => {
     switch (action.type) {
         case ALL_USERS:
             return {
@@ -31,4 +31,4 @@ const allUserReducer = (state = {}, action) => {
             return state;
     }
 }
-export default allUserReducer;
+export default allUser;

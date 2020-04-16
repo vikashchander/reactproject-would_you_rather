@@ -15,18 +15,19 @@ function QuestionView(props) {
       setvotedForOption(dataValue);
     console.log(votedForOption);
     }
+    var redirect = `/questions/${id}`;
     const handleClick = () => {
         // action
         const qid = id;
         const answer = votedForOption;
         const authedUser = setAuthedUser;
-        console.log({ authedUser, qid, answer });
-        handleAnswerQuestion({ authedUser, qid, answer });
-      history.push('/')
+        //console.log({ authedUser, qid, answer });
+        
+      (answer !==undefined )&&props.handleAnswerQuestion({ authedUser, qid, answer });
     };
     const question = questions[id];
     const userData = users[question.author];
-    console.log(userData);
+    //console.log(userData);
     const allQuestionAnswer = Object.values(questions);
     // console.log(allQuestionAnswer);
     const unAnsweredQuestions = allQuestionAnswer.filter(data => !data.optionOne.votes.includes(setAuthedUser) && !data.optionTwo.votes.includes(setAuthedUser));
@@ -35,7 +36,7 @@ function QuestionView(props) {
     //console.log(answeredQuestions);
     const unAnsweredData = unAnsweredQuestions.filter(data => data.id === id);
     const unAnsweredView = unAnsweredData[0];
-    console.log(unAnsweredData[0]);
+   // console.log(unAnsweredData[0]);
     const answeredData = answeredQuestions.filter(data => data.id === id);
     const answeredView = answeredData[0];
     // console.log(answeredView)    
@@ -47,8 +48,12 @@ function QuestionView(props) {
     const totalVotes = voteCountOptionOne + voteCountOptionTwo;
     const votePercentOptionOne =
         Math.round((voteCountOptionOne / totalVotes) * 10000) / 100;
+        console.log(votePercentOptionOne)
     const votePercentOptionTwo =
         Math.round((voteCountOptionTwo / totalVotes) * 10000) / 100;
+        console.log(votePercentOptionTwo);
+        var processBarOne =votePercentOptionOne;
+        var processBarTwo = votePercentOptionTwo
     return (
         <React.Fragment>
             {answeredData.length === 1 ?
@@ -61,13 +66,17 @@ function QuestionView(props) {
                         <div className="card-body">
                             <h4 className="card-title">{userData.name}'s Opinion</h4>
                             <div className='mb-2'>
-                                <p>{answeredView.optionOne.text}</p>
+                             <div className='d-inline-block'>
+                             <p className='text-capitalize'>{answeredView.optionOne.text}</p>
+                             {votedForOptionOne && <span className="badge badge-info mr-2">Is Your Choice</span>}
+                             </div>
                             <div className="progress">
-                            <div className="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionOne} out of {totalVotes} votes</div>
-                                   </div>
-                                   <p className='my-2'>{answeredView.optionTwo.text}</p>
+                            <div className={`progress-bar bg-info w-${processBarOne}`} role="progressbar"   aria-valuemax="100">{voteCountOptionOne} out of {totalVotes} votes</div>
+                            </div>
+                            
+                                   <p className='my-2 mr-3 text-capitalize'>{answeredView.optionTwo.text}{votedForOptionTwo && <span className="badge badge-info mr-2">Is Your Choice</span>}</p>
                                    <div className="progress">
-                          <div className="progress-bar bg-info w-50" role="progressbar"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{voteCountOptionTwo} out of {totalVotes} votes</div>
+                          <div className={`progress-bar bg-info w-${processBarTwo}`} role="progressbar"  aria-valuemax="100">{voteCountOptionTwo} out of {totalVotes} votes</div>
                             </div>
                             </div>
                         </div>
@@ -90,8 +99,7 @@ function QuestionView(props) {
                                 <label className="custom-control-label text-success text-capitalize" htmlFor="defaultGroupExample2">{unAnsweredView.optionTwo.text}</label>
                             </div>
                         </div>
-                        <div onClick={handleClick}  className="btn btn-info">Submit Your Opinion</div>
-                    </div>
+                        <Link onClick={handleClick} to={votedForOption===undefined?redirect:'/'} className="btn btn-info">Submit Your Opinion</Link></div>
                 </div>)}
         </React.Fragment>
     )
@@ -106,23 +114,3 @@ const mapStateToProps = (state) => {
 }
 
 export default withRouter(connect(mapStateToProps,{ handleAnswerQuestion})(QuestionView));
-
-
-
-{/* <div className='container mx-auto row mb-5'>
-{answeredQuestions.map((data, index) =>
-    < div className="card data m-2 col-md-6" key={data.id} >
-        <div className="mx-auto">
-            <img className="w-50 rounded-circle ml-5 my-3" src={answeredTab[index].avatarURL}
-                alt="Card image cap" />
-        </div>
-        <div className="card-body my-2">
-            <h5 className="card-title">{answeredTab[index].name}</h5>
-            <li className="card-text">{data.optionOne.text}</li>
-            <h6 className="text-center mb-0 pb-0">OR</h6>
-            <li className="mt-0 card-text">{data.optionTwo.text}</li>
-        </div>
-        <Link to={`/questions/${data.id}`} className="mb-4 btn btn-info btn-block">View Poll</Link>
-    </div >
-)}
-</div> */}

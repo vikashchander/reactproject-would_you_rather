@@ -7,8 +7,8 @@ class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            optionOne: "",
-            optionTwo: ""
+            optionOne: undefined,
+            optionTwo: undefined
         }
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -21,6 +21,8 @@ class AddQuestion extends React.Component {
         });
         console.log(e.target.value)
     };
+      
+    //console.log({ optionOne, optionTwo, authedUser })
 
     handleClick = async () => {
         const { optionOne, optionTwo } = this.state;
@@ -28,11 +30,11 @@ class AddQuestion extends React.Component {
         let optionOneText = optionOne;
         let optionTwoText = optionTwo;
         let author = authedUser;
-        (!optionOne || !optionTwo) ? history.push("/newquestion") : history.push("/")
+        // (optionOne==undefined && optionTwo==undefined) ?history.push("/"):history.push("/newquestion") 
         //console.log({ optionOne, optionTwo, authedUser })
-        await this.props.handleAddQuestion({
+        (optionOne !=undefined && optionTwo!=undefined) && (await this.props.handleAddQuestion({
             optionOneText, optionTwoText, author
-        })
+        }))
         // console.log({ optionOneText, optionTwoText, author })
     }
 
@@ -40,10 +42,11 @@ class AddQuestion extends React.Component {
         const { optionOne, optionTwo } = this.state;
         const { users, authedUser } = this.props;
         const user = users[authedUser];
+        var redirect =(optionOne==undefined && optionTwo==undefined)?"/newquestion":"/";
         return (
             <React.Fragment>
                 <div className="card w-25 my-4 h-50 mx-auto">
-                    <img src={user.avatarURL} className="h-50 rounded-circle mx-auto" alt="..." />
+                    <img src={user.avatarURL} className="h-50 w-25 rounded-circle mx-auto" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{user.name}</h5>
                         <form className="needs-validation" noValidate>
@@ -68,7 +71,7 @@ class AddQuestion extends React.Component {
                                         Looks good!
                                     </div>
                                 </div>
-                                <Link onClick={this.handleClick} className='btn btn-info  btn-block'>Ask Others Opinion</Link>
+                                <Link onClick={this.handleClick} to={redirect} className='btn btn-info  btn-block'>Ask Others Opinion</Link>
                             </div> 
                         </form>
                     </div>
