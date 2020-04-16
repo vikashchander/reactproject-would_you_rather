@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import store from '../store/store';
@@ -16,7 +16,7 @@ class Header extends Component {
         e.preventDefault();
         let value = null;
         this.props.setAuthedUser(value);
-        console.log(this.props.setAuthedUser(value).payload);
+        // console.log(this.props.setAuthedUser(value).payload);
         const { history } = this.props;
         (this.props.setAuthedUser(value).payload) ? history.push('/login') : history.push('/');
 

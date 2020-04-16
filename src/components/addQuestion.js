@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom';
 import { handleAddQuestion } from "../actions/addQuestion";
@@ -19,20 +19,20 @@ class AddQuestion extends React.Component {
         this.setState({
             [e.target.name]: value
         });
-        console.log(e.target.value)
+        // console.log(e.target.value)
     };
       
     //console.log({ optionOne, optionTwo, authedUser })
 
     handleClick = async () => {
         const { optionOne, optionTwo } = this.state;
-        const { authedUser, history } = this.props;
+        const { authedUser} = this.props;
         let optionOneText = optionOne;
         let optionTwoText = optionTwo;
         let author = authedUser;
         // (optionOne==undefined && optionTwo==undefined) ?history.push("/"):history.push("/newquestion") 
         //console.log({ optionOne, optionTwo, authedUser })
-        (optionOne !=undefined && optionTwo!=undefined) && (await this.props.handleAddQuestion({
+        (optionOne !==undefined && optionTwo!==undefined) && (await this.props.handleAddQuestion({
             optionOneText, optionTwoText, author
         }))
         // console.log({ optionOneText, optionTwoText, author })
@@ -42,11 +42,11 @@ class AddQuestion extends React.Component {
         const { optionOne, optionTwo } = this.state;
         const { users, authedUser } = this.props;
         const user = users[authedUser];
-        var redirect =(optionOne==undefined && optionTwo==undefined)?"/newquestion":"/";
+        var redirect =(optionOne===undefined && optionTwo===undefined)?"/newquestion":"/";
         return (
             <React.Fragment>
                 <div className="card w-25 my-4 h-50 mx-auto">
-                    <img src={user.avatarURL} className="h-50 w-25 rounded-circle mx-auto" alt="..." />
+                    <img src={user.avatarURL} className="h-50 w-25 rounded-circle mx-auto" alt="user" />
                     <div className="card-body">
                         <h5 className="card-title">{user.name}</h5>
                         <form className="needs-validation" noValidate>
@@ -55,8 +55,7 @@ class AddQuestion extends React.Component {
                                 <div className="col-md-12 mb-3 ">
                                     <input type="text" className="form-control" id="validationCustom01"
                                         name="optionOne" required placeholder="Enter Opinion One Text" value={optionOne}
-                                        onChange={this.handleOnChange}
-                                        required />
+                                        onChange={this.handleOnChange} />
                                     <div className="valid-feedback">
                                         Looks good!
                                     </div>

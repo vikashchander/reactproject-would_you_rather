@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
 class LeaderBoard extends React.Component {
     render() {
         const { user } = this.props;
-        console.log(user)
+        // console.log(user)
         const userScore = Object.keys(user);
         const usersWithScore = {};
-        userScore.map(data => {
+         userScore.map((data) =>{
             const userData = user[data];
-            console.log(userData);
             const answeredQuestions = Object.keys(userData.answers).length;
             const createdQuestions = userData.questions.length;
             userData.score = answeredQuestions + createdQuestions;
             userData.userAnswers = Object.keys(userData.answers).length;;
             usersWithScore[data] = userData;
-        })
-        console.log(usersWithScore);
+         })
+        // console.log(usersWithScore);
         const userWithSortedScore = {};
         Object.keys(user)
             .map(uid => user[uid])
@@ -24,9 +23,9 @@ class LeaderBoard extends React.Component {
             .forEach(data => {
                 userWithSortedScore[data.id] = data;
             });
-        console.log(userWithSortedScore);
+        // console.log(userWithSortedScore);
         const allLeaderCards = Object.values(userWithSortedScore)
-        console.log(allLeaderCards);
+        // console.log(allLeaderCards);
 
         return (
             <React.Fragment>
@@ -35,7 +34,7 @@ class LeaderBoard extends React.Component {
                     <div className="card data m-3 col-md-6" key={data.id}>
                         <div className="mx-auto">
                             <img className="w-50 rounded-circle ml-5 my-3" src={data.avatarURL}
-                                alt="Card image cap" />
+                                alt="user" />
                         </div>
                         <div className="card-body my-2">
                             <h4 className="card-title">{data.name}</h4>

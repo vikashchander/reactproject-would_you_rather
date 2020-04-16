@@ -6,14 +6,14 @@ import './home.css';
 
 
 function QuestionView(props) {
-    const { questions, users, history,setAuthedUser } = props;
+    const { questions, users,setAuthedUser } = props;
     // console.log(this.props);
     let { id } = useParams();
     const [votedForOption, setvotedForOption] = useState();
     const handleChange = (e) => {
         let dataValue =e.target.value;
       setvotedForOption(dataValue);
-    console.log(votedForOption);
+    // console.log(votedForOption);
     }
     var redirect = `/questions/${id}`;
     const handleClick = () => {
@@ -48,10 +48,10 @@ function QuestionView(props) {
     const totalVotes = voteCountOptionOne + voteCountOptionTwo;
     const votePercentOptionOne =
         Math.round((voteCountOptionOne / totalVotes) * 10000) / 100;
-        console.log(votePercentOptionOne)
+        // console.log(votePercentOptionOne)
     const votePercentOptionTwo =
         Math.round((voteCountOptionTwo / totalVotes) * 10000) / 100;
-        console.log(votePercentOptionTwo);
+        // console.log(votePercentOptionTwo);
         var processBarOne =votePercentOptionOne;
         var processBarTwo = votePercentOptionTwo
     return (
@@ -91,11 +91,11 @@ function QuestionView(props) {
                         <h4 className="card-title">{userData.name}'s Ask </h4>
                         <div className='mb-2'>
                             <div className="card-text custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" checked={votedForOption === "optionOne"} name='optionOne' value="optionOne" id="defaultGroupExample1" onChange={handleChange} />
+                                <input type="radio" className="custom-control-input" checked={votedForOption === "optionOne"} name='optionOne' value="optionOne" id="defaultGroupExample1" onChange={handleChange} />
                                 <label className="custom-control-label text-primary text-capitalize" htmlFor="defaultGroupExample1">{unAnsweredView.optionOne.text}</label>
                             </div>
                             <div className="card-text custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" checked={votedForOption === "optionTwo"}  name='optionTwo' value="optionTwo" id="defaultGroupExample2" onChange={handleChange} />
+                                <input type="radio" className="custom-control-input" checked={votedForOption === "optionTwo"}  name='optionTwo' value="optionTwo" id="defaultGroupExample2" onChange={handleChange} />
                                 <label className="custom-control-label text-success text-capitalize" htmlFor="defaultGroupExample2">{unAnsweredView.optionTwo.text}</label>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ import './home.css';
 class Home extends React.Component {
     render() {
         const { question, users, setAuthedUser } = this.props;
-        console.log(this.props);
+        // console.log(this.props);
         const allQuestionAnswer = Object.values(question);
         //console.log(allQuestionAnswer);
         const unAnsweredQuestions = allQuestionAnswer.filter(data => !data.optionOne.votes.includes(setAuthedUser) && !data.optionTwo.votes.includes(setAuthedUser));
@@ -14,29 +14,29 @@ class Home extends React.Component {
         const answeredQuestions = allQuestionAnswer.filter(data => data.optionOne.votes.includes(setAuthedUser) || data.optionTwo.votes.includes(setAuthedUser));
         //console.log(answeredQuestions);
         const unAnsweredTab = unAnsweredQuestions.map(data => users[data.author])
-        console.log('this page render with new anAnswedtab');
+        // console.log('this page render with new anAnswedtab');
         const answeredTab = answeredQuestions.map(data => users[data.author])
 
         return (
             <React.Fragment>
                 <div className='container w-75 my-3'>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active text-capitalize" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                                aria-selected="true">Unanswered Questions <span class="badge badge-info">{unAnsweredQuestions.length}</span></a>
+                    <ul className="nav nav-tabs" id="myTab" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active text-capitalize" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                                aria-selected="true">Unanswered Questions <span className="badge badge-info">{unAnsweredQuestions.length}</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-capitalize" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                                aria-selected="false">Answered Questions <span class="badge badge-info">{answeredQuestions.length}</span></a>
+                        <li className="nav-item">
+                            <a className="nav-link text-capitalize" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                                aria-selected="false">Answered Questions <span className="badge badge-info">{answeredQuestions.length}</span></a>
                         </li>
                     </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div className="tab-content" id="myTabContent">
+                        <div className="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div className='container mx-auto row mb-5'>
                             {unAnsweredQuestions.map((data, index) =>
                               <div className="card data m-2 col-md-6" key={data.id} >
                                   <div className='mx-auto'>
-                                  <img className="w-50 rounded-circle ml-5 my-3" src={unAnsweredTab[index].avatarURL} alt="Card image cap" />
+                                  <img className="w-50 rounded-circle ml-5 my-3" src={unAnsweredTab[index].avatarURL} alt="user" />
                                      </div>       
                                     <div className="card-body my-2">
                                         <h5 className="card-title text-capitalize">{unAnsweredTab[index].name}'s ask</h5>
@@ -49,13 +49,13 @@ class Home extends React.Component {
                             )}
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div className='container mx-auto row mb-5'>
                             {answeredQuestions.map((data, index) =>
                                 < div className="card data m-2 col-md-6" key={data.id} >
                                     <div className="mx-auto">
                                         <img className="w-50 rounded-circle ml-5 my-3" src={answeredTab[index].avatarURL}
-                                            alt="Card image cap" />
+                                            alt="user" />
                                     </div>
                                     <div className="card-body my-2">
                                         <h5 className="card-title">{answeredTab[index].name}</h5>
