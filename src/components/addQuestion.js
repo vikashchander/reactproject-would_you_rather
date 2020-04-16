@@ -42,7 +42,7 @@ class AddQuestion extends React.Component {
         const { optionOne, optionTwo } = this.state;
         const { users, authedUser } = this.props;
         const user = users[authedUser];
-        var redirect =(optionOne==="" && optionTwo==="")?"/newquestion":"/";
+        var redirect =(optionOne !=="" && optionTwo!=="")?"/":"/newquestion";
         return (
             <React.Fragment>
                 <div className="card w-25 my-4 h-50 mx-auto">
