@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import {withRouter } from 'react-router-dom';
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +12,16 @@ class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+     referrer = null;
+
+  componentDidMount() {
+    const {
+      history,
+      location: { pathname }} = this.props;
+    this.referrer = pathname;
+    history.push("/login");
+  }
+
     handleSelection(e) {
         var value = e.target.value;
         this.setState({ data: true, value })
@@ -21,9 +31,16 @@ class Login extends React.Component {
     }
 
     handleSubmit() {
+         const { history } = this.props;
+        console.log(this.referrer)
        // console.log(this.state.value)
-        this.props.setAuthedUser(this.state.value);
+        if (this.state.data ===true) { this.props.setAuthedUser(this.state.value) }
        // console.log(this.props.setAuthedUser(this.state.value).payload);
+         if (this.referrer === "/login") {
+          history.push("/");
+    } else {
+      history.push(String(this.referrer));
+    }
       
     }
 
@@ -32,7 +49,6 @@ class Login extends React.Component {
         const data1 = { ...sarahedo };
         const data2 = { ...tylermcginnis };
         const data3 = { ...johndoe };
-        const Redirect =this.state.data ? "/" : "/login";
         return (
             <React.Fragment>
                 <div className="card w-25 mx-auto my-2">
@@ -49,7 +65,7 @@ class Login extends React.Component {
                                 <option value={data3.id}>{data3.name}</option>
                             </select>
                         </div>
-                        <Link onClick={this.handleSubmit} to={Redirect} className="btn btn-info btn-md btn-block">Login</Link>
+                        <button onClick={this.handleSubmit}  className="btn btn-info btn-md btn-block">Login</button>
                     </div>
                 </div>
             </React.Fragment >

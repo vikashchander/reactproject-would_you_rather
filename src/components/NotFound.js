@@ -5,7 +5,7 @@ class NotFound extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <p>this is not found page</p>
+                    <h4 className='text-capitalize text-center'>page not found !!!</h4>
                 </div>
 
             </React.Fragment>
